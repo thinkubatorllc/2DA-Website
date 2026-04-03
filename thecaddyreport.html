@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheCaddyReport — Know Before You Go</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-900: #1a3008;
+    --green-800: #2D5016;
+    --green-700: #3a6b1e;
+    --green-600: #4d8a28;
+    --green-400: #7bbf4a;
+    --green-200: #c2e89a;
+    --green-100: #e4f5d0;
+    --cream: #f7f4ee;
+    --warm-white: #fdfcf9;
+    --gold: #c8952a;
+    --gold-light: #e8b84b;
+    --text-dark: #1a1a18;
+    --text-mid: #3d4036;
+    --text-muted: #7a7d72;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green-800);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 110%, rgba(77,138,40,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% -10%, rgba(200,149,42,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--warm-white));
+  }
+
+  /* subtle grid texture */
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.3px;
+  }
+
+  .logo span { color: var(--gold-light); }
+
+  .nav-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px 100px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,149,42,0.2);
+    border: 1px solid rgba(200,149,42,0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold-light);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 82px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    max-width: 820px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.65;
+    margin-top: 24px;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 0;
+    margin-top: 40px;
+    max-width: 460px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+
+  .email-form input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    outline: none;
+  }
+
+  .email-form input::placeholder { color: #aaa; }
+
+  .email-form button {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .email-form button:hover { background: var(--gold-light); }
+
+  .hero-social-proof {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+
+  /* ── PHONE MOCKUPS ── */
+  .mockups-section {
+    padding: 80px 24px 100px;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .mockups-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+  }
+
+  .phones-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .phone-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .phone {
+    width: 210px;
+    border-radius: 28px;
+    border: 2px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    box-shadow:
+      0 24px 60px rgba(0,0,0,0.12),
+      0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+  }
+
+  .phone:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 36px 72px rgba(0,0,0,0.16), 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .phone.center { transform: scale(1.06); }
+  .phone.center:hover { transform: scale(1.06) translateY(-6px); }
+
+  /* Phone screen internals */
+  .ps-bar {
+    background: var(--green-800);
+    color: white;
+    font-size: 9px;
+    padding: 6px 12px 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ps-nav {
+    background: var(--green-800);
+    color: white;
+    padding: 8px 12px 10px;
+  }
+
+  .ps-nav h3 { font-size: 13px; font-weight: 500; font-family: 'Playfair Display', serif; }
+  .ps-nav p { font-size: 9px; opacity: 0.7; margin-top: 1px; }
+
+  .ps-search {
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 5px 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 9px;
+    margin-top: 7px;
+  }
+
+  .ps-content { padding: 8px; background: #f4f4f0; }
+  .ps-label { font-size: 7px; color: #888; text-transform: uppercase; letter-spacing: 0.8px; margin: 6px 0 4px; font-weight: 500; }
+
+  .ps-card {
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 0.5px solid #eee;
+  }
+
+  .ps-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .ps-course { font-size: 10px; font-weight: 500; color: #1a1a18; }
+  .ps-loc { font-size: 8px; color: #888; margin-top: 1px; }
+
+  .ps-badge {
+    font-size: 7px;
+    font-weight: 500;
+    padding: 2px 5px;
+    border-radius: 10px;
+  }
+
+  .b-ex { background: #EAF3DE; color: #3B6D11; }
+  .b-gd { background: #E6F1FB; color: #185FA5; }
+  .b-fr { background: #FAEEDA; color: #854F0B; }
+
+  .ps-meta { display: flex; gap: 6px; margin-top: 5px; }
+  .ps-dot { width: 5px; height: 5px; border-radius: 50%; display: inline-block; margin-right: 2px; }
+  .dot-g { background: #639922; }
+  .dot-y { background: #EF9F27; }
+  .ps-meta span { font-size: 8px; color: #888; display: flex; align-items: center; }
+
+  .ps-event { display: inline-block; background: #FAEEDA; color: #854F0B; font-size: 7px; padding: 2px 5px; border-radius: 10px; margin-top: 4px; }
+
+  .ps-bottomnav {
+    background: white;
+    border-top: 0.5px solid #eee;
+    display: flex;
+    padding: 6px 0 8px;
+  }
+
+  .ps-navitem {
+    flex: 1;
+    text-align: center;
+    font-size: 7px;
+    color: #aaa;
+  }
+
+  .ps-navitem.active { color: var(--green-800); font-weight: 500; }
+  .ps-navicon { font-size: 13px; display: block; margin-bottom: 1px; }
+
+  /* Course page phone */
+  .ps-hero-mini {
+    background: var(--green-800);
+    padding: 8px 12px 10px;
+    color: white;
+  }
+
+  .ps-back { font-size: 8px; opacity: 0.7; margin-bottom: 4px; }
+  .ps-hero-mini h3 { font-size: 12px; font-weight: 500; font-family: 'Playfair Display', serif; }
+  .ps-hero-mini p { font-size: 8px; opacity: 0.7; margin-top: 1px; }
+  .ps-vbadge { display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 7px; padding: 2px 6px; border-radius: 10px; margin-top: 5px; }
+
+  .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 8px; background: #f4f4f0; }
+  .ps-tile { background: white; border-radius: 6px; padding: 6px; text-align: center; border: 0.5px solid #eee; }
+  .ps-tile .tl { font-size: 7px; color: #888; }
+  .ps-tile .tv { font-size: 13px; font-weight: 500; color: #1a1a18; }
+  .ps-tile .ts { font-size: 8px; color: #EF9F27; }
+
+  .ps-tabs { display: flex; border-bottom: 0.5px solid #eee; background: white; }
+  .ps-tab { flex: 1; text-align: center; padding: 6px; font-size: 8px; color: #aaa; }
+  .ps-tab.active { color: var(--green-800); font-weight: 500; border-bottom: 1.5px solid var(--green-800); }
+
+  .ps-feed { padding: 8px; background: #f4f4f0; }
+  .ps-official {
+    background: #EAF3DE;
+    border-left: 2px solid var(--green-800);
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-bottom: 5px;
+  }
+  .ps-official .ol { font-size: 7px; color: #3B6D11; font-weight: 500; margin-bottom: 2px; }
+  .ps-official .ot { font-size: 8px; color: #333; line-height: 1.4; }
+
+  .ps-report { background: white; border-radius: 6px; padding: 6px 8px; border: 0.5px solid #eee; margin-bottom: 4px; }
+  .ps-report-top { display: flex; justify-content: space-between; }
+  .ps-report .ru { font-size: 8px; font-weight: 500; }
+  .ps-report .rt { font-size: 7px; color: #aaa; }
+  .ps-report .rb { font-size: 8px; color: #555; line-height: 1.4; margin-top: 2px; }
+
+  /* checkin phone */
+  .ps-cin-head { background: var(--green-800); padding: 10px 12px 12px; color: white; }
+  .ps-cin-head p { font-size: 8px; opacity: 0.7; }
+  .ps-cin-head h3 { font-size: 12px; font-weight: 500; font-family: 'Playfair Display', serif; margin-top: 2px; }
+
+  .ps-cin-form { padding: 10px; background: #f4f4f0; }
+  .ps-cin-title { font-size: 11px; font-weight: 500; color: #1a1a18; }
+  .ps-cin-sub { font-size: 8px; color: #888; margin-top: 2px; margin-bottom: 10px; }
+
+  .ps-rrow { margin-bottom: 8px; }
+  .ps-rlabel { font-size: 9px; font-weight: 500; color: #333; margin-bottom: 4px; }
+  .ps-rdots { display: flex; gap: 5px; }
+  .ps-rdot {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 0.5px solid #ddd;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    color: #aaa;
+    background: white;
+  }
+  .ps-rdot.sel { background: var(--green-800); color: white; border-color: var(--green-800); }
+
+  .ps-submit {
+    width: 100%;
+    background: var(--green-800);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  /* ── FEATURES ── */
+  .features-section {
+    background: var(--green-900);
+    padding: 100px 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .features-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(77,138,40,0.2) 0%, transparent 60%);
+  }
+
+  .features-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    max-width: 580px;
+    margin-bottom: 60px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .feature-card {
+    padding: 36px;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    transition: background 0.2s;
+  }
+
+  .feature-card:hover { background: rgba(255,255,255,0.06); }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .fi-green { background: rgba(77,138,40,0.3); }
+  .fi-gold { background: rgba(200,149,42,0.25); }
+  .fi-blue { background: rgba(24,95,165,0.25); }
+
+  .feature-card h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── WHO IT'S FOR ── */
+  .audience-section {
+    padding: 100px 24px;
+    background: var(--cream);
+  }
+
+  .audience-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .audience-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .audience-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--green-800);
+    margin-bottom: 14px;
+  }
+
+  .audience-card p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .benefit-list { list-style: none; }
+  .benefit-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 7px 0;
+    border-bottom: 0.5px solid rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .benefit-list li::before {
+    content: '';
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-100);
+    border: 1px solid var(--green-200);
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%233B6D11' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── TRUST CALLOUT ── */
+  .trust-section {
+    padding: 80px 24px;
+    background: white;
+    text-align: center;
+  }
+
+  .trust-inner { max-width: 640px; margin: 0 auto; }
+
+  .trust-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 600;
+    color: var(--green-800);
+    line-height: 1.3;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .trust-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .trust-rule {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #EAF3DE;
+    border: 1px solid #C0DD97;
+    color: #3B6D11;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-top: 32px;
+  }
+
+  /* ── NOTIFY CTA ── */
+  .cta-section {
+    background: var(--green-800);
+    padding: 100px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(77,138,40,0.4) 0%, transparent 60%);
+  }
+
+  .cta-inner { position: relative; max-width: 560px; margin: 0 auto; }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .cta-form input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    outline: none;
+  }
+
+  .cta-form input::placeholder { color: #aaa; }
+
+  .cta-form button {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-form button:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-900);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .footer-logo span { color: var(--gold-light); }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .audience-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .phone { width: 175px; }
+    .phone.center { transform: scale(1.03); }
+    .phones-row { gap: 12px; }
+    .feature-card { padding: 28px 24px; }
+    .audience-card { padding: 28px 24px; }
+  }
+
+  @media (max-width: 540px) {
+    .phones-row .phone-wrap:first-child,
+    .phones-row .phone-wrap:last-child {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-texture"></div>
+  <nav>
+    <div class="logo">The<span>Caddy</span>Report</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">← Back to 2DA</a>
+      <div class="nav-badge">Coming Soon</div>
+    </div>
+  </nav>
+  <div class="hero-content">
+    <div class="eyebrow">For golfers, by golfers</div>
+    <h1>Know the course <em>before</em> you go.</h1>
+    <p class="hero-sub">Real-time conditions, honest player reports, and live course updates — all in one place. Your caddy, before you even get there.</p>
+    <form class="email-form" action="https://2downauto.us13.list-manage.com/subscribe/post?u=9bb8bf51e4f778bb093712bda&amp;id=ebda8bf6ae&amp;f_id=00d570e1f0" method="post" target="_blank" onsubmit="handleSubmit(event, 'hero-msg')">
+      <input type="email" name="EMAIL" placeholder="Enter your email address" required>
+      <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_9bb8bf51e4f778bb093712bda_ebda8bf6ae" tabindex="-1" value=""></div>
+      <button type="submit">Notify me</button>
+    </form>
+    <div id="hero-msg" style="display:none;margin-top:12px;font-size:13px;color:var(--gold-light);font-weight:500;">✓ You're on the list — we'll be in touch!</div>
+    <div class="hero-social-proof">Be first to know when we launch in your area</div>
+  </div>
+</section>
+
+<!-- PHONE MOCKUPS -->
+<section class="mockups-section">
+  <div class="mockups-label">A glimpse of what's coming</div>
+  <div class="phones-row">
+
+    <!-- Phone 1: Home Feed -->
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="ps-bar"><span>9:41</span><span>●●●●</span></div>
+        <div class="ps-nav">
+          <h3>TheCaddyReport</h3>
+          <p>Columbia, MD area</p>
+          <div class="ps-search">🔍 Search courses nearby...</div>
+        </div>
+        <div class="ps-content">
+          <div class="ps-label">Updated in last 2 hours</div>
+          <div class="ps-card">
+            <div class="ps-card-top">
+              <div>
+                <div class="ps-course">Hobbits Glen GC</div>
+                <div class="ps-loc">Columbia · 2.1 mi</div>
+              </div>
+              <span class="ps-badge b-ex">Excellent</span>
+            </div>
+            <div class="ps-meta">
+              <span><span class="ps-dot dot-g"></span>Greens 4.8</span>
+              <span><span class="ps-dot dot-g"></span>Pace: Fast</span>
+            </div>
+            <div class="ps-event">⛳ Member Guest Sat</div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-top">
+              <div>
+                <div class="ps-course">Turf Valley Resort</div>
+                <div class="ps-loc">Ellicott City · 4.8 mi</div>
+              </div>
+              <span class="ps-badge b-gd">Good</span>
+            </div>
+            <div class="ps-meta">
+              <span><span class="ps-dot dot-g"></span>Greens 4.1</span>
+              <span><span class="ps-dot dot-y"></span>Moderate</span>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-top">
+              <div>
+                <div class="ps-course">Waverly Woods GC</div>
+                <div class="ps-loc">Marriottsville · 6 mi</div>
+              </div>
+              <span class="ps-badge b-fr">Fair</span>
+            </div>
+            <div class="ps-meta">
+              <span><span class="ps-dot dot-y"></span>Greens 3.2</span>
+              <span><span class="ps-dot dot-y"></span>Slow</span>
+            </div>
+          </div>
+        </div>
+        <div class="ps-bottomnav">
+          <div class="ps-navitem active"><span class="ps-navicon">⛳</span>Courses</div>
+          <div class="ps-navitem"><span class="ps-navicon">📋</span>Rounds</div>
+          <div class="ps-navitem"><span class="ps-navicon" style="color:#2D5016;font-size:16px;">＋</span>Check In</div>
+          <div class="ps-navitem"><span class="ps-navicon">📅</span>Events</div>
+          <div class="ps-navitem"><span class="ps-navicon">👤</span>Profile</div>
+        </div>
+      </div>
+      <div class="phone-label">Home feed</div>
+    </div>
+
+    <!-- Phone 2: Course Page (center) -->
+    <div class="phone-wrap">
+      <div class="phone center">
+        <div class="ps-bar"><span>9:41</span><span>●●●●</span></div>
+        <div class="ps-hero-mini">
+          <div class="ps-back">← Back</div>
+          <h3>Hobbits Glen Golf Course</h3>
+          <p>Columbia, MD · 18 holes · Par 72</p>
+          <div class="ps-vbadge">✓ Verified Course</div>
+        </div>
+        <div class="ps-grid">
+          <div class="ps-tile"><div class="tl">Greens</div><div class="tv">4.8</div><div class="ts">★★★★★</div></div>
+          <div class="ps-tile"><div class="tl">Fairways</div><div class="tv">4.5</div><div class="ts">★★★★½</div></div>
+          <div class="ps-tile"><div class="tl">Pace</div><div class="tv">Fast</div><div class="ts" style="color:#639922;font-size:7px;">4h 10m avg</div></div>
+          <div class="ps-tile"><div class="tl">Overall</div><div class="tv">4.6</div><div class="ts">★★★★★</div></div>
+        </div>
+        <div style="text-align:center;font-size:7px;color:#aaa;padding:3px 0 4px;background:#f4f4f0;">Based on 6 reports today</div>
+        <div class="ps-tabs">
+          <div class="ps-tab active">Feed</div>
+          <div class="ps-tab">Events</div>
+          <div class="ps-tab">Tee times</div>
+        </div>
+        <div class="ps-feed">
+          <div class="ps-official">
+            <div class="ol">✓ From the Pro Shop</div>
+            <div class="ot">Greens rolled this morning — running 10.5 on the stimp. Cart path only on 14 & 15.</div>
+          </div>
+          <div class="ps-report">
+            <div class="ps-report-top">
+              <span class="ru">Mike T. · 14 hdcp</span>
+              <span class="rt">2h ago</span>
+            </div>
+            <div class="rb">Greens are absolutely perfect right now — best shape all year.</div>
+          </div>
+          <div class="ps-report">
+            <div class="ps-report-top">
+              <span class="ru">Sarah K.</span>
+              <span class="rt">4h ago</span>
+            </div>
+            <div class="rb">Bunkers freshly raked. Slight mud on 7 fairway near the creek.</div>
+          </div>
+        </div>
+        <div class="ps-bottomnav">
+          <div class="ps-navitem"><span class="ps-navicon">⛳</span>Courses</div>
+          <div class="ps-navitem"><span class="ps-navicon">📋</span>Rounds</div>
+          <div class="ps-navitem"><span class="ps-navicon" style="color:#2D5016;font-size:16px;">＋</span>Check In</div>
+          <div class="ps-navitem"><span class="ps-navicon">📅</span>Events</div>
+          <div class="ps-navitem"><span class="ps-navicon">👤</span>Profile</div>
+        </div>
+      </div>
+      <div class="phone-label">Course page</div>
+    </div>
+
+    <!-- Phone 3: Check In -->
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="ps-bar"><span>9:41</span><span>●●●●</span></div>
+        <div class="ps-cin-head">
+          <p>Checking in at</p>
+          <h3>Hobbits Glen Golf Course</h3>
+        </div>
+        <div class="ps-cin-form">
+          <div class="ps-cin-title">How are conditions today?</div>
+          <div class="ps-cin-sub">Tap to rate — takes 30 seconds</div>
+          <div class="ps-rrow">
+            <div class="ps-rlabel">Greens</div>
+            <div class="ps-rdots">
+              <div class="ps-rdot">1</div>
+              <div class="ps-rdot">2</div>
+              <div class="ps-rdot">3</div>
+              <div class="ps-rdot">4</div>
+              <div class="ps-rdot sel">5</div>
+            </div>
+          </div>
+          <div class="ps-rrow">
+            <div class="ps-rlabel">Fairways</div>
+            <div class="ps-rdots">
+              <div class="ps-rdot">1</div>
+              <div class="ps-rdot">2</div>
+              <div class="ps-rdot">3</div>
+              <div class="ps-rdot sel">4</div>
+              <div class="ps-rdot">5</div>
+            </div>
+          </div>
+          <div class="ps-rrow">
+            <div class="ps-rlabel">Pace of play</div>
+            <div class="ps-rdots">
+              <div class="ps-rdot" style="width:auto;padding:0 6px;border-radius:20px;font-size:8px;">Slow</div>
+              <div class="ps-rdot sel" style="width:auto;padding:0 6px;border-radius:20px;font-size:8px;">Normal</div>
+              <div class="ps-rdot" style="width:auto;padding:0 6px;border-radius:20px;font-size:8px;">Fast</div>
+            </div>
+          </div>
+          <div class="ps-rrow">
+            <div class="ps-rlabel">Bunkers</div>
+            <div class="ps-rdots">
+              <div class="ps-rdot">1</div>
+              <div class="ps-rdot">2</div>
+              <div class="ps-rdot">3</div>
+              <div class="ps-rdot sel">4</div>
+              <div class="ps-rdot">5</div>
+            </div>
+          </div>
+          <div style="background:white;border-radius:6px;border:0.5px solid #eee;padding:7px;font-size:8px;color:#aaa;margin-top:6px;min-height:36px;">Add a note or photo tip...</div>
+          <button class="ps-submit">Submit report</button>
+          <div style="text-align:center;font-size:8px;color:#aaa;margin-top:6px;">Your report goes live instantly</div>
+        </div>
+        <div class="ps-bottomnav">
+          <div class="ps-navitem"><span class="ps-navicon">⛳</span>Courses</div>
+          <div class="ps-navitem"><span class="ps-navicon">📋</span>Rounds</div>
+          <div class="ps-navitem"><span class="ps-navicon" style="color:#2D5016;font-size:16px;">＋</span>Check In</div>
+          <div class="ps-navitem"><span class="ps-navicon">📅</span>Events</div>
+          <div class="ps-navitem"><span class="ps-navicon">👤</span>Profile</div>
+        </div>
+      </div>
+      <div class="phone-label">Check-in flow</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="features-inner">
+    <div class="section-eyebrow">How it works</div>
+    <div class="section-title">Everything you need before your round.</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon fi-green">📍</div>
+        <h3>Real-time condition reports</h3>
+        <p>Golfers check in and rate greens, fairways, pace, and bunkers right from the course. Reports go live instantly so you always have the freshest picture.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-gold">✓</div>
+        <h3>Verified course voice</h3>
+        <p>Official course posts are clearly marked "From the Pro Shop" with a verified badge — so you always know if it's a player report or a direct update from the staff.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-blue">📅</div>
+        <h3>Events & tee time alerts</h3>
+        <p>Courses can post open tee times, tournaments, and specials. Players can find groups and post events. One board for everything happening at every course near you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience-section">
+  <div class="audience-inner">
+    <div class="section-eyebrow" style="color:var(--green-700);">Built for both sides of the game</div>
+    <div class="section-title" style="color:var(--green-900);">For golfers and courses alike.</div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>For golfers</h3>
+        <p>Stop guessing whether a course is worth the drive. Get honest, real-time intel from players who were just out there.</p>
+        <ul class="benefit-list">
+          <li>See live condition ratings before you book</li>
+          <li>Browse the events board for tournaments and deals</li>
+          <li>Find groups and fill out your foursome</li>
+          <li>Track courses you love and get notified of changes</li>
+          <li>Leave reports that help the whole community</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <h3>For courses</h3>
+        <p>Give your course a verified voice. Post updates, fill afternoon tee times, and promote your events to golfers actively looking to play.</p>
+        <ul class="benefit-list">
+          <li>Claim your verified listing with a Pro Shop badge</li>
+          <li>Post real-time condition updates from staff</li>
+          <li>Alert players to open tee times and last-minute deals</li>
+          <li>Promote tournaments and events to local golfers</li>
+          <li>Build credibility through transparent player feedback</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-quote">"Player reports are never removed or suppressed — ever."</div>
+    <p class="trust-sub">Courses have a voice on TheCaddyReport — but they can't silence yours. Every player report stays visible. That's not a policy, it's a promise.</p>
+    <div class="trust-rule">⛳ Honest golf intel. Always.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Be first on the tee.</h2>
+    <p>We're launching soon. Drop your email and we'll let you know the moment TheCaddyReport goes live in your area.</p>
+    <form class="cta-form" action="https://2downauto.us13.list-manage.com/subscribe/post?u=9bb8bf51e4f778bb093712bda&amp;id=ebda8bf6ae&amp;f_id=00d570e1f0" method="post" target="_blank" onsubmit="handleSubmit(event, 'cta-msg')">
+      <input type="email" name="EMAIL" placeholder="Enter your email address" required>
+      <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_9bb8bf51e4f778bb093712bda_ebda8bf6ae" tabindex="-1" value=""></div>
+      <button type="submit">Notify me</button>
+    </form>
+    <div id="cta-msg" style="display:none;margin-top:16px;font-size:14px;color:rgba(255,255,255,0.8);font-weight:500;">✓ You're on the list — we'll be in touch!</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The<span>Caddy</span>Report</div>
+  <p>© 2025 TheCaddyReport.com · Know before you go.</p>
+</footer>
+
+<script>
+function handleSubmit(e, msgId) {
+  const form = e.target;
+  const email = form.querySelector('input[type="email"]').value;
+  if (!email) return;
+  setTimeout(() => {
+    const msg = document.getElementById(msgId);
+    if (msg) msg.style.display = 'block';
+    form.reset();
+  }, 800);
+}
+</script>
+</body>
+</html>
