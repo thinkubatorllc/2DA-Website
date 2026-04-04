@@ -26,10 +26,10 @@
       --green-border: rgba(80, 160, 80, 0.18);
       --green-text: rgba(100, 220, 100, 0.55);
       --gold: #f5c842;
-      --text-muted: rgba(255, 255, 255, 0.4);
-      --text-dim: rgba(255, 255, 255, 0.22);
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-mid: rgba(255, 255, 255, 0.12);
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --text-dim: rgba(255, 255, 255, 0.45);
+      --border-subtle: rgba(255, 255, 255, 0.11);
+      --border-mid: rgba(255, 255, 255, 0.2);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -273,14 +273,14 @@
     }
 
     .hero-sub {
-      font-size: 16px;
-      color: var(--text-muted);
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
       line-height: 1.75;
       max-width: 460px;
       margin-top: 28px;
       position: relative;
       z-index: 2;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .hero-actions {
@@ -339,7 +339,7 @@
       gap: 48px;
       margin-top: 72px;
       padding-top: 36px;
-      border-top: 0.5px solid var(--border-subtle);
+      border-top: 0.5px solid rgba(255,255,255,0.18);
       position: relative;
       z-index: 2;
       flex-wrap: wrap;
@@ -350,14 +350,16 @@
       font-size: 40px;
       color: var(--white);
       line-height: 1;
+      text-align: center;
     }
 
     .hero-stat-label {
       font-size: 11px;
-      color: var(--text-dim);
+      color: rgba(255,255,255,0.55);
       letter-spacing: 0.06em;
       margin-top: 3px;
-      font-weight: 300;
+      font-weight: 400;
+      text-align: center;
     }
 
     /* ── MISSION BAND ── */
@@ -433,8 +435,8 @@
     }
 
     .pillar {
-      background: rgba(255, 255, 255, 0.028);
-      border: 0.5px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.05);
+      border: 0.5px solid rgba(255,255,255,0.1);
       padding: 32px 24px;
       position: relative;
       overflow: hidden;
@@ -443,12 +445,12 @@
 
     .pillar:first-child { border-radius: 14px 0 0 14px; }
     .pillar:last-child  { border-radius: 0 14px 14px 0; }
-    .pillar:hover { background: rgba(255, 255, 255, 0.045); }
+    .pillar:hover { background: rgba(255, 255, 255, 0.08); }
 
     .pillar-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 64px;
-      color: rgba(230, 48, 34, 0.1);
+      color: rgba(230, 48, 34, 0.18);
       line-height: 1;
       position: absolute;
       top: 10px;
@@ -472,18 +474,18 @@
     }
 
     .pillar-desc {
-      font-size: 13px;
-      color: var(--text-muted);
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
       line-height: 1.65;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     /* ── STORY ── */
     .story-section { padding: 0 40px 88px; }
 
     .story-inner {
-      background: rgba(255, 255, 255, 0.025);
-      border: 0.5px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      border: 0.5px solid rgba(255,255,255,0.1);
       border-radius: 20px;
       padding: 56px;
       display: grid;
@@ -531,7 +533,7 @@
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.85;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .story-body p + p { margin-top: 16px; }
@@ -567,7 +569,7 @@
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.48);
+      color: rgba(255, 255, 255, 0.65);
       margin-top: 20px;
       display: flex;
       align-items: center;
@@ -591,8 +593,8 @@
     }
 
     .app-card {
-      background: rgba(255, 255, 255, 0.028);
-      border: 0.5px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.055);
+      border: 0.5px solid rgba(255, 255, 255, 0.12);
       border-radius: 18px;
       padding: 40px;
       position: relative;
@@ -604,14 +606,14 @@
       transition: background 0.25s ease;
     }
 
-    .app-card:hover { background: rgba(255, 255, 255, 0.042); }
+    .app-card:hover { background: rgba(255, 255, 255, 0.07); }
 
     .app-card-caddy {
-      background: var(--green-bg);
-      border-color: var(--green-border);
+      background: rgba(15, 36, 18, 0.85);
+      border-color: rgba(80, 160, 80, 0.25);
     }
 
-    .app-card-caddy:hover { background: rgba(15, 38, 20, 0.8); }
+    .app-card-caddy:hover { background: rgba(15, 42, 20, 0.95); }
 
     .app-card-bg {
       font-family: 'Black Han Sans', sans-serif;
@@ -677,8 +679,8 @@
       z-index: 2;
     }
 
-    .app-subtitle-golf  { color: rgba(255,255,255,0.22); }
-    .app-subtitle-caddy { color: var(--green-text); }
+    .app-subtitle-golf  { color: rgba(255,255,255,0.45); }
+    .app-subtitle-caddy { color: rgba(100,220,100,0.75); }
 
     .app-chips {
       display: flex;
@@ -699,14 +701,14 @@
       border-radius: 3px;
     }
 
-    .app-chip-golf  { background: rgba(255,255,255,0.055); color: rgba(255,255,255,0.38); border: 0.5px solid rgba(255,255,255,0.08); }
-    .app-chip-caddy { background: rgba(80,200,80,0.07); color: rgba(100,220,100,0.55); border: 0.5px solid rgba(80,200,80,0.13); }
+    .app-chip-golf  { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 0.5px solid rgba(255,255,255,0.14); }
+    .app-chip-caddy { background: rgba(80,200,80,0.1); color: rgba(100,220,100,0.75); border: 0.5px solid rgba(80,200,80,0.2); }
 
     .app-desc {
-      font-size: 13px;
-      color: var(--text-muted);
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
       line-height: 1.7;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 28px;
       position: relative;
       z-index: 2;
@@ -790,10 +792,10 @@
     }
 
     .caddy-feature-text {
-      font-size: 12px;
-      color: rgba(255,255,255,0.32);
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
       line-height: 1.55;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .btn-app-primary {
@@ -902,10 +904,10 @@
     }
 
     .community-body {
-      font-size: 14px;
-      color: rgba(255,255,255,0.62);
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
       line-height: 1.75;
-      font-weight: 300;
+      font-weight: 400;
       max-width: 420px;
     }
 
@@ -983,20 +985,36 @@
     }
 
     .footer-mark {
-      width: 28px;
-      height: 28px;
+      width: 38px;
+      height: 38px;
       background: var(--red);
-      border-radius: 5px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .footer-mark-shadow {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 18px;
+      color: rgba(0,0,0,0.25);
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      line-height: 1;
+      user-select: none;
     }
 
     .footer-mark-text {
       font-family: 'Black Han Sans', sans-serif;
-      font-size: 12px;
+      font-size: 18px;
       color: var(--white);
       line-height: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .footer-copy {
@@ -1062,6 +1080,188 @@
       .pillar:last-child  { border-radius: 0 0 14px 14px; }
       .pillar:nth-child(2), .pillar:nth-child(3) { border-radius: 0; }
     }
+    /* ── MERCH TEASER ── */
+    .merch-section { padding: 0 40px 88px; }
+
+    .merch-inner {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.11);
+      border-radius: 20px;
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .merch-bg {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 180px;
+      color: rgba(255,255,255,0.02);
+      position: absolute;
+      bottom: -32px;
+      right: -20px;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .merch-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .merch-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 54px);
+      color: var(--white);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .merch-title em { color: var(--red); font-style: normal; }
+
+    .merch-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      font-weight: 400;
+      max-width: 400px;
+    }
+
+    .merch-items {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .merch-chip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      background: rgba(245,200,66,0.08);
+      color: rgba(245,200,66,0.6);
+      border: 0.5px solid rgba(245,200,66,0.18);
+    }
+
+    .btn-merch {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      border: none;
+      padding: 15px 32px;
+      border-radius: 7px;
+      cursor: default;
+      text-decoration: none;
+      white-space: nowrap;
+      text-align: center;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-merch-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: rgba(0,0,0,0.5);
+    }
+
+    /* ── MAILCHIMP COMMUNITY FORM ── */
+    .mc-form-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      min-width: 260px;
+    }
+
+    .mc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mc-input {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 13px 16px;
+      border-radius: 7px;
+      border: none;
+      background: rgba(0,0,0,0.35);
+      color: var(--white);
+      outline: none;
+      border: 0.5px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s;
+    }
+
+    .mc-input::placeholder { color: rgba(255,255,255,0.35); }
+    .mc-input:focus { border-color: rgba(255,255,255,0.35); }
+
+    .mc-submit {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      border: none;
+      padding: 13px 20px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .mc-submit:hover { background: var(--black-3); transform: translateY(-1px); }
+
+    .mc-success {
+      display: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+      text-align: center;
+      padding: 8px 0;
+    }
+
+    .mc-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .merch-section { padding: 0 20px 64px; }
+      .merch-inner { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
+      .merch-bg { font-size: 100px; }
+    }
   </style>
 </head>
 
@@ -1080,9 +1280,10 @@
       <li><a href="#story">Story</a></li>
       <li><a href="#ethos">Ethos</a></li>
       <li><a href="#apps">Apps</a></li>
+      <li><a href="#store">Store</a></li>
       <li><a href="#community">Community</a></li>
     </ul>
-    <a href="#community" class="nav-cta">Join the Community</a>
+    <a href="https://2downauto.us13.list-manage.com/subscribe/post?u=9bb8bf51e4f778bb093712bda&id=ebda8bf6ae" target="_blank" rel="noopener noreferrer" class="nav-cta">Join the Community</a>
   </nav>
 
   <!-- HERO -->
@@ -1110,8 +1311,8 @@
         <div class="hero-stat-label">Comeback stories</div>
       </div>
       <div>
-        <div class="hero-stat-num">0</div>
-        <div class="hero-stat-label">Times giving up</div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Belief in you</div>
       </div>
     </div>
   </section>
@@ -1278,6 +1479,29 @@
     <p class="suite-note reveal">More apps coming · The 2DA suite grows with the community</p>
   </section>
 
+  <!-- MERCH TEASER -->
+  <div class="merch-section reveal" id="store">
+    <div class="merch-inner">
+      <div class="merch-bg" aria-hidden="true">GEAR</div>
+      <div>
+        <p class="merch-eyebrow">Wear the mindset</p>
+        <h2 class="merch-title">2DA <em>Store</em><br>Coming Soon.</h2>
+        <p class="merch-body">Hats, tees, hoodies, and gear built around the 2DA ethos. Wear what you believe in. The store is dropping soon — get on the list to be first to know.</p>
+        <div class="merch-items">
+          <span class="merch-chip">Trucker Hats</span>
+          <span class="merch-chip">Golf Polos</span>
+          <span class="merch-chip">Hoodies</span>
+          <span class="merch-chip">Workout Tees</span>
+          <span class="merch-chip">Accessories</span>
+        </div>
+      </div>
+      <div class="btn-merch">
+        <span>Store Coming Soon</span>
+        <span class="btn-merch-sub">Join the list for early access</span>
+      </div>
+    </div>
+  </div>
+
   <!-- COMMUNITY CTA -->
   <div class="community-section" id="community">
     <div class="community-inner reveal">
@@ -1287,9 +1511,14 @@
         <h2 class="community-title">You've been<br>down two.<br>We all have.</h2>
         <p class="community-body">2DA is a community of people who've faced something hard and kept going. Share your story. Celebrate others. Remind yourself — and everyone around you — that the comeback is always possible.</p>
       </div>
-      <div class="community-ctas">
-        <a href="#" class="btn-dark">Join the Community</a>
-        <a href="#" class="btn-outline-white">Share Your Story</a>
+      <div class="mc-form-wrap">
+        <form class="mc-form" action="https://2downauto.us13.list-manage.com/subscribe/post?u=9bb8bf51e4f778bb093712bda&amp;id=ebda8bf6ae&amp;f_id=00d570e1f0" method="post" target="_blank" onsubmit="handleMcSubmit(event)">
+          <input class="mc-input" type="email" name="EMAIL" placeholder="Your email address" required />
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_9bb8bf51e4f778bb093712bda_ebda8bf6ae" tabindex="-1" value=""></div>
+          <button class="mc-submit" type="submit">Join the Community →</button>
+        </form>
+        <div class="mc-success" id="mc-success-msg">✓ You're in — welcome to 2DA!</div>
+        <p class="mc-note">No spam. Just stories, drops, and community updates.</p>
       </div>
     </div>
   </div>
@@ -1298,7 +1527,7 @@
   <footer>
     <div class="footer-left">
       <a href="#" class="footer-logo">
-        <div class="footer-mark"><span class="footer-mark-text">2DA</span></div>
+        <div class="footer-mark"><div class="footer-mark-shadow">2DA</div><div class="footer-mark-text">2DA</div></div>
       </a>
       <span class="footer-copy">© 2025 2 Down Auto · All rights reserved</span>
     </div>
@@ -1306,6 +1535,17 @@
   </footer>
 
   <script>
+    // Mailchimp form
+    function handleMcSubmit(e) {
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+      if (!email) return;
+      setTimeout(() => {
+        form.style.display = 'none';
+        document.getElementById('mc-success-msg').style.display = 'block';
+      }, 700);
+    }
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
